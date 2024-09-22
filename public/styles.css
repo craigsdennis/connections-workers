@@ -1,0 +1,117 @@
+/* Cloudflare Colors */
+:root {
+    --cf-orange: #F48120;
+    --cf-blue: #00AAFF;
+    --cf-gray: #F5F5F5;
+    --cf-dark-gray: #333333;
+    --cf-white: #FFFFFF;
+    --cf-green: #28a745;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--cf-gray);
+    color: var(--cf-dark-gray);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--cf-orange);
+}
+
+#shuffle-btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--cf-blue);
+    color: var(--cf-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.tile {
+    background-color: var(--cf-white);
+    border: 2px solid var(--cf-blue);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.tile.selected {
+    background-color: var(--cf-blue);
+    color: var(--cf-white);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: var(--cf-orange);
+    color: var(--cf-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:disabled {
+    background-color: var(--cf-dark-gray);
+    cursor: not-allowed;
+}
+
+.categories {
+    margin-top: 20px;
+}
+
+.category-item {
+    background-color: var(--cf-green);
+    color: var(--cf-white);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.category-item .category-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.category-item .category-values {
+    font-size: 16px;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .tile {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
