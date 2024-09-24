@@ -11,7 +11,7 @@ const TODAYS_CATEGORIES = [
   {
     name: "New Features used to build this actual Worker!",
     difficulty: 2,
-    values: ["ASSETS", "Git Builds", "Logs", "Preview URLs"],
+    values: ["ASSETS", "Git Builds", "Observability", "Preview URLs"],
   },
   {
     name: "AI Task types hosted on Workers AI",
