@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle submit button click
     submitBtn.addEventListener('click', async () => {
         const response = await submitAttempt(selectedTiles);
+        if (response.message) {
+            resultDiv.textContent = response.message;
+        }
         if (response.success) {
             resultDiv.textContent = '';
             displayCategory(response);
@@ -92,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultDiv.textContent = 'Congratulations! You have found all categories.';
             }
         } else {
-            resultDiv.textContent = 'Incorrect group. Try again.';
             // Deselect tiles
             document.querySelectorAll('.tile.selected').forEach(tile => tile.classList.remove('selected'));
             selectedTiles = [];

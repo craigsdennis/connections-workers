@@ -4,70 +4,69 @@ const app = new Hono<{ Bindings: Env }>();
 
 const TODAYS_CATEGORIES = [
   {
-      name: 'Fruits',
-      difficulty: 1,
-      values: ['Apple', 'Banana', 'Cherry', 'Date']
+    name: "Fruits",
+    difficulty: 1,
+    values: ["Apple", "Banana", "Cherry", "Date"],
   },
   {
-      name: 'Animals',
-      difficulty: 2,
-      values: ['Elephant', 'Frog', 'Giraffe', 'Horse']
+    name: "Animals",
+    difficulty: 2,
+    values: ["Elephant", "Frog", "Giraffe", "Horse"],
   },
   {
-      name: 'Countries',
-      difficulty: 3,
-      values: ['India', 'Japan', 'Kenya', 'Libya']
+    name: "Countries",
+    difficulty: 3,
+    values: ["India", "Japan", "Kenya", "Libya"],
   },
   {
-      name: 'Subjects',
-      difficulty: 4,
-      values: ['Math', 'Physics', 'Chemistry', 'Biology']
-  }
+    name: "Subjects",
+    difficulty: 4,
+    values: ["Math", "Physics", "Chemistry", "Biology"],
+  },
 ];
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 
-app.get("/api/games/today", async(c) => {
-  const categoryValues = TODAYS_CATEGORIES
-    .map((category) => category.values)
+app.get("/api/games/today", async (c) => {
+  const categoryValues = TODAYS_CATEGORIES.map((category) => category.values)
     .flat()
     .sort();
   return c.json({
-    categories: categoryValues
+    categories: categoryValues,
   });
 });
 
 interface Counter {
   [key: string]: {
-    count: number,
-    category: string,
-    difficulty: number,
-    values: Array<string>
-  }
+    count: number;
+    category: string;
+    difficulty: number;
+    values: Array<string>;
+  };
 }
 
 interface AttemptResponse {
-  success: boolean,
-  message?: string,
-  category?: string,
-  difficulty?: number,
-  values?: Array<string>
+  success: boolean;
+  message?: string;
+  category?: string;
+  difficulty?: number;
+  values?: Array<string>;
 }
 
-app.post("/api/games/today/attempt", async(c) => {
-  // Check cookie for numAttempts 
-    // Set to 1 if not
+app.post("/api/games/today/attempt", async (c) => {
   // Parse the body
   const payload = await c.req.json();
+  console.log("Attempt being made", payload)
   // Ensure there are 4 only
   const attempt = new Set(payload);
   if (attempt.size !== 4) {
     console.error(`Attempt was only ${attempt.size} unique values`);
     // TODO: Throw or return ?
-    throw new Error(`You must choose four values`);
+    return c.json({ success: false, message: "You must choose four values" });
   }
+  // Check cookie for mistakesRemainig
 
   const matchCountByCategory = TODAYS_CATEGORIES.reduce((counter, grouping) => {
     const wanted = new Set(grouping.values);
@@ -76,7 +75,7 @@ app.post("/api/games/today/attempt", async(c) => {
       difficulty: grouping.difficulty,
       category: grouping.name,
       values: grouping.values,
-    }
+    };
     return counter;
   }, {} as Counter);
 
@@ -88,20 +87,20 @@ app.post("/api/games/today/attempt", async(c) => {
         success: true,
         category: result.category,
         difficulty: result.difficulty,
-        values: result.values
-      }
+        values: result.values,
+      };
       break;
     } else if (result.count === 3) {
       // Send almost if close [purposeful error]
       response = {
         success: false,
-        message: `Super close you have ${result.count} correct. Keep trying!`
-      }
+        message: `One away...`,
+      };
       break;
     }
   }
   if (response === undefined) {
-    response = {success: false}
+    response = { success: false, message: "Nope that's not it. You got this!" };
   }
   return c.json(response);
 });
