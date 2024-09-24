@@ -1,3 +1,5 @@
+// script.js
+
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
     const submitBtn = document.getElementById('submit-btn');
@@ -136,17 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoryItem = document.createElement('div');
         categoryItem.classList.add('category-item');
 
-        // Apply background color based on difficulty
-        const difficultyColors = {
-            1: '#FFD700', // Yellow
-            2: '#32CD32', // Green
-            3: '#1E90FF', // Blue
-            4: '#800080'  // Purple
-        };
-        // Use default color if difficulty is not specified or invalid
-        const defaultColor = '#32CD32'; // Light Green as default
-        const difficultyColor = difficultyColors[response.difficulty] || defaultColor;
-        categoryItem.style.backgroundColor = difficultyColor;
+        // Determine the class based on difficulty
+        const difficulty = parseInt(response.difficulty);
+        const validDifficulty = [1, 2, 3, 4].includes(difficulty);
+        const difficultyClass = validDifficulty ? `difficulty-${difficulty}` : 'default-category';
+        categoryItem.classList.add(difficultyClass);
 
         // Create title with category name and difficulty if available
         const categoryTitle = document.createElement('div');
@@ -166,10 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const existingItems = Array.from(categoriesDiv.children);
         const insertIndex = existingItems.findIndex(item => {
             const itemDifficulty = parseInt(item.dataset.difficulty);
-            return itemDifficulty > response.difficulty;
+            return itemDifficulty > difficulty;
         });
 
-        categoryItem.dataset.difficulty = response.difficulty || 0;
+        categoryItem.dataset.difficulty = difficulty || 0;
 
         if (insertIndex === -1) {
             categoriesDiv.appendChild(categoryItem);

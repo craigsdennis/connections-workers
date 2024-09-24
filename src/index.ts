@@ -4,24 +4,24 @@ const app = new Hono<{ Bindings: Env }>();
 
 const TODAYS_CATEGORIES = [
   {
-    name: "Fruits",
+    name: "Things that went GA",
     difficulty: 1,
-    values: ["Apple", "Banana", "Cherry", "Date"],
+    values: ["Queues", "Vectorize", "Stun Server", "Gradual Rollouts"],
   },
   {
-    name: "Animals",
+    name: "New Features used to build this actual Worker!",
     difficulty: 2,
-    values: ["Elephant", "Frog", "Giraffe", "Horse"],
+    values: ["ASSETS", "Git Builds", "Logs", "Preview URLs"],
   },
   {
-    name: "Countries",
+    name: "AI Task types hosted on Workers AI",
     difficulty: 3,
-    values: ["India", "Japan", "Kenya", "Libya"],
+    values: ["Image-To-Text", "Text-To-Image", "Translation", "Automatic Speech Recognition"],
   },
   {
-    name: "Subjects",
+    name: "Things that are FREE!",
     difficulty: 4,
-    values: ["Math", "Physics", "Chemistry", "Biology"],
+    values: ["API Shield", "Page Shield", "Security Anayltics", "Images"],
   },
 ];
 

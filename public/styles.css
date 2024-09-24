@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* Variables */
 :root {
     --orange: #F48120;      /* Orange */
@@ -118,6 +120,27 @@ h1 {
 
 .category-item .category-values {
     font-size: 16px;
+}
+
+/* Difficulty Level Classes */
+.difficulty-1 {
+    background-color: #FFD700; /* Yellow */
+}
+
+.difficulty-2 {
+    background-color: #32CD32; /* Green */
+}
+
+.difficulty-3 {
+    background-color: #1E90FF; /* Blue */
+}
+
+.difficulty-4 {
+    background-color: #800080; /* Purple */
+}
+
+.default-category {
+    background-color: #32CD32; /* Light Green as default */
 }
 
 /* Results */
