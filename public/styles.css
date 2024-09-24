@@ -1,24 +1,22 @@
 /* Variables */
 :root {
-    --cf-orange: #F48120;
-    --cf-blue: #00AAFF;
-    --cf-gray: #F5F5F5;
-    --cf-dark-gray: #333333;
-    --cf-white: #FFFFFF;
-    --cf-green: #28a745;
-    --cf-red: #dc3545;
-    --cf-yellow: #FFD700;
-    --cf-light-green: #32CD32;
-    --cf-blue-medium: #1E90FF;
-    --cf-purple: #800080;
+    --orange: #F48120;      /* Orange */
+    --black: #000000;       /* Black */
+    --white: #FFFFFF;       /* White */
+    --yellow: #FFD700;      /* Yellow */
+    --green: #32CD32;       /* Green */
+    --blue: #1E90FF;        /* Blue */
+    --purple: #800080;      /* Purple */
+    --error-red: #dc3545;   /* Red for errors */
+    --default-category-bg: #32CD32; /* Light Green as default */
 }
 
 /* Base Styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: var(--cf-gray);
-    color: var(--cf-dark-gray);
+    background-color: var(--black);
+    color: var(--white);
 }
 
 /* Layout Containers */
@@ -31,7 +29,7 @@ body {
 /* Typography */
 h1 {
     text-align: center;
-    color: var(--cf-orange);
+    color: var(--orange);
 }
 
 /* Buttons */
@@ -39,26 +37,29 @@ h1 {
     width: 100%;
     padding: 15px;
     font-size: 18px;
-    background-color: var(--cf-orange);
-    color: var(--cf-white);
-    border: none;
+    background-color: var(--orange);
+    color: var(--white);
+    border: 2px solid var(--orange); /* Orange outline */
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
 }
 
 .btn:disabled {
-    background-color: var(--cf-dark-gray);
+    background-color: #555555; /* Dark gray for disabled state */
+    border-color: #555555;
     cursor: not-allowed;
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
     opacity: 0.9;
-    transition: opacity 0.3s;
 }
 
+/* Specific Shuffle Button Styling */
 #shuffle-btn {
-    background-color: var(--cf-blue);
+    background-color: var(--orange);
+    border-color: var(--orange);
     margin-bottom: 10px;
 }
 
@@ -67,32 +68,34 @@ h1 {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns */
     gap: 10px;
+    margin-top: 20px;
 }
 
 .tile {
-    background-color: var(--cf-white);
-    border: 2px solid var(--cf-blue);
+    background-color: var(--black); /* Black background */
+    border: 2px solid var(--orange); /* Orange border */
     padding: 20px;
     text-align: center;
     cursor: pointer;
     user-select: none;
     font-size: 18px;
     border-radius: 5px;
+    color: var(--white); /* White text */
     transition: background-color 0.3s, color 0.3s;
 }
 
 .tile:hover {
-    background-color: var(--cf-blue);
-    color: var(--cf-white);
+    background-color: var(--orange); /* Orange background on hover */
+    color: var(--black);             /* Black text on hover */
 }
 
 .tile.selected {
-    background-color: var(--cf-blue);
-    color: var(--cf-white);
+    background-color: var(--white); /* White background when selected */
+    color: var(--black);            /* Black text when selected */
 }
 
 .tile:focus {
-    outline: 2px solid var(--cf-orange);
+    outline: 2px solid var(--orange);
     outline-offset: 2px;
 }
 
@@ -102,7 +105,7 @@ h1 {
 }
 
 .category-item {
-    color: var(--cf-white);
+    color: var(--white);
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 5px;
@@ -122,10 +125,11 @@ h1 {
     margin-top: 20px;
     font-size: 18px;
     text-align: center;
+    color: var(--white);
 }
 
 .result.error-message {
-    color: var(--cf-red);
+    color: var(--error-red);
     font-weight: bold;
 }
 
@@ -140,7 +144,7 @@ h1 {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(245, 245, 245, 0.95); /* Slightly transparent background */
+    background-color: rgba(0, 0, 0, 0.95); /* Nearly opaque black background */
     z-index: 1000; /* Ensure it overlays other elements */
 }
 
@@ -171,4 +175,3 @@ h1 {
         font-size: 80px; /* Slightly smaller on small screens */
     }
 }
-x

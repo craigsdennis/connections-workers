@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             4: '#800080'  // Purple
         };
         // Use default color if difficulty is not specified or invalid
-        const defaultColor = '#28a745'; // Green color as default
+        const defaultColor = '#32CD32'; // Light Green as default
         const difficultyColor = difficultyColors[response.difficulty] || defaultColor;
         categoryItem.style.backgroundColor = difficultyColor;
 
