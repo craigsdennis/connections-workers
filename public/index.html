@@ -4,19 +4,30 @@
     <meta charset="UTF-8">
     <title>Connections Clone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Play the Connections Clone game online. Match tiles to find hidden groups!">
     <!-- Link to CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <main class="container">
         <h1>Connections Clone</h1>
-        <button id="shuffle-btn">Shuffle Tiles</button>
-        <div id="game-board" class="game-board"></div>
-        <button id="submit-btn" disabled>Submit</button>
-        <div id="categories" class="categories"></div>
-        <div id="result" class="result"></div>
-    </div>
+        <!-- Matched Categories -->
+        <div id="categories" class="categories" aria-live="polite"></div>
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading">Loading game...</div>
+        <!-- Game Controls -->
+        <button id="shuffle-btn" class="btn">Shuffle Tiles</button>
+        <!-- Game Board -->
+        <div id="game-board" class="game-board" role="grid" aria-label="Game Board"></div>
+        <!-- Submit Button -->
+        <button id="submit-btn" class="btn" disabled>Submit</button>
+        <!-- Result Messages -->
+        <div id="result" class="result" aria-live="assertive"></div>
+        <!-- Celebration Emoji -->
+        <div id="celebration" class="celebration" aria-live="polite" aria-hidden="true">🎉</div>
+    </main>
     <!-- Link to JavaScript -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

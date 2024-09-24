@@ -1,4 +1,4 @@
-/* Cloudflare Colors */
+/* Variables */
 :root {
     --cf-orange: #F48120;
     --cf-blue: #00AAFF;
@@ -6,8 +6,14 @@
     --cf-dark-gray: #333333;
     --cf-white: #FFFFFF;
     --cf-green: #28a745;
+    --cf-red: #dc3545;
+    --cf-yellow: #FFD700;
+    --cf-light-green: #32CD32;
+    --cf-blue-medium: #1E90FF;
+    --cf-purple: #800080;
 }
 
+/* Base Styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -15,31 +21,51 @@ body {
     color: var(--cf-dark-gray);
 }
 
+/* Layout Containers */
 .container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Typography */
 h1 {
     text-align: center;
     color: var(--cf-orange);
 }
 
-#shuffle-btn {
+/* Buttons */
+.btn {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: var(--cf-blue);
+    padding: 15px;
+    font-size: 18px;
+    background-color: var(--cf-orange);
     color: var(--cf-white);
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
+.btn:disabled {
+    background-color: var(--cf-dark-gray);
+    cursor: not-allowed;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+#shuffle-btn {
+    background-color: var(--cf-blue);
+    margin-bottom: 10px;
+}
+
+/* Game Board */
 .game-board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns */
     gap: 10px;
 }
 
@@ -52,6 +78,12 @@ h1 {
     user-select: none;
     font-size: 18px;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tile:hover {
+    background-color: var(--cf-blue);
+    color: var(--cf-white);
 }
 
 .tile.selected {
@@ -59,29 +91,17 @@ h1 {
     color: var(--cf-white);
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    font-size: 18px;
-    background-color: var(--cf-orange);
-    color: var(--cf-white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
+.tile:focus {
+    outline: 2px solid var(--cf-orange);
+    outline-offset: 2px;
 }
 
-button:disabled {
-    background-color: var(--cf-dark-gray);
-    cursor: not-allowed;
-}
-
+/* Categories */
 .categories {
     margin-top: 20px;
 }
 
 .category-item {
-    background-color: var(--cf-green);
     color: var(--cf-white);
     padding: 10px;
     border-radius: 5px;
@@ -97,21 +117,57 @@ button:disabled {
     font-size: 16px;
 }
 
+/* Results */
 .result {
     margin-top: 20px;
     font-size: 18px;
     text-align: center;
 }
 
+.result.error-message {
+    color: var(--cf-red);
+    font-weight: bold;
+}
+
+/* Celebration Emoji */
+.celebration {
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    font-size: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 0.95); /* Slightly transparent background */
+    z-index: 1000; /* Ensure it overlays other elements */
+}
+
+/* Loading Indicator */
+.loading {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns on small screens */
+    }
+
     .tile {
         padding: 15px;
         font-size: 16px;
     }
 
-    button {
+    .btn {
         padding: 12px;
         font-size: 16px;
+    }
+
+    .celebration {
+        font-size: 80px; /* Slightly smaller on small screens */
     }
 }

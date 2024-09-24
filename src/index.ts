@@ -34,7 +34,7 @@ app.get("/api/games/today", async (c) => {
     .flat()
     .sort();
   return c.json({
-    categories: categoryValues,
+    tiles: categoryValues,
   });
 });
 
@@ -58,9 +58,9 @@ interface AttemptResponse {
 app.post("/api/games/today/attempt", async (c) => {
   // Parse the body
   const payload = await c.req.json();
-  console.log("Attempt being made", payload)
+  console.log("Attempt being made", payload);
   // Ensure there are 4 only
-  const attempt = new Set(payload);
+  const attempt = new Set(payload.values);
   if (attempt.size !== 4) {
     console.error(`Attempt was only ${attempt.size} unique values`);
     // TODO: Throw or return ?
