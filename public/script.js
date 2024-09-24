@@ -190,12 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
             shuffleTiles();
             createTiles(tilesData);
         } else {
-            // Game over - Display celebration emoji
+            // Game over - Display celebration emoji without hiding categories
             gameBoard.style.display = 'none';
             shuffleBtn.style.display = 'none';
             submitBtn.style.display = 'none';
             resultDiv.style.display = 'none';
-            categoriesDiv.style.display = 'none';
+            // categoriesDiv remains visible
             celebrationDiv.style.display = 'flex';
             celebrationDiv.setAttribute('aria-hidden', 'false');
         }
