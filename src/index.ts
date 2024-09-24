@@ -21,7 +21,7 @@ const TODAYS_CATEGORIES = [
   {
     name: "Things that are FREE!",
     difficulty: 4,
-    values: ["API Shield", "Page Shield", "Security Anayltics", "Images"],
+    values: ["API Shield", "Page Shield", "Security Analytics", "Images"],
   },
 ];
 
