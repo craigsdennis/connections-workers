@@ -2,15 +2,15 @@
 
 /* Variables */
 :root {
-    --orange: #F48120;      /* Orange */
+    --orange:	#f48120;      /* Orange */
     --black: #000000;       /* Black */
     --white: #FFFFFF;       /* White */
-    --yellow: #FFD700;      /* Yellow */
-    --green: #32CD32;       /* Green */
-    --blue: #1E90FF;        /* Blue */
-    --purple: #800080;      /* Purple */
+    --yellow: #FBAD41;      /* Yellow */
+    --green: #9BCA3E;       /* Green */
+    --blue: #3E74FF;        /* Blue */
+    --purple: #8176B5;      /* Purple */
     --error-red: #dc3545;   /* Red for errors */
-    --default-category-bg: #32CD32; /* Light Green as default */
+    --default-category-bg: #9BCA3E; /* Light Green as default */
 }
 
 /* Base Styles */
@@ -31,7 +31,7 @@ body {
 /* Typography */
 h1 {
     text-align: center;
-    color: var(--orange);
+    color: var(--white);
 }
 
 /* Buttons */
@@ -41,7 +41,7 @@ h1 {
     font-size: 18px;
     background-color: var(--orange);
     color: var(--white);
-    border: 2px solid var(--orange); /* Orange outline */
+    border: 2px solid var(--orange); 
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
@@ -60,9 +60,10 @@ h1 {
 
 /* Specific Shuffle Button Styling */
 #shuffle-btn {
-    background-color: var(--orange);
-    border-color: var(--orange);
+    background-color: var(--yellow);
+    border-color: var(--yellow);
     margin-bottom: 10px;
+    color: var(--black);
 }
 
 /* Game Board */
@@ -124,23 +125,26 @@ h1 {
 
 /* Difficulty Level Classes */
 .difficulty-1 {
-    background-color: #FFD700; /* Yellow */
+    background-color: var(--yellow);
+    color: var(--black);
 }
 
 .difficulty-2 {
-    background-color: #32CD32; /* Green */
+    background-color: var(--green); /* Green */
+    color: var(--black);
 }
 
 .difficulty-3 {
-    background-color: #1E90FF; /* Blue */
+    background-color: var(--blue); /* Blue */
 }
 
 .difficulty-4 {
-    background-color: #800080; /* Purple */
+    background-color: var(--purple); /* Purple */
 }
 
 .default-category {
-    background-color: #32CD32; /* Light Green as default */
+    background-color: var(--green); 
+    color: var(--black);
 }
 
 /* Results */

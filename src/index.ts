@@ -6,12 +6,12 @@ const TODAYS_CATEGORIES = [
   {
     name: "Things that went GA",
     difficulty: 1,
-    values: ["Queues", "Vectorize", "Stun Server", "Gradual Rollouts"],
+    values: ["Queues", "Vectorize", "TURN Server", "Gradual Rollouts"],
   },
   {
     name: "New Features used to build this actual Worker!",
     difficulty: 2,
-    values: ["ASSETS", "Git Builds", "Observability", "Preview URLs"],
+    values: ["ASSETS", "Git Builds", "Logs", "Preview URLs"],
   },
   {
     name: "AI Task types hosted on Workers AI",
